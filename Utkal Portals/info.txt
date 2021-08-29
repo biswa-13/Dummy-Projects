@@ -1,0 +1,1 @@
+This folder contains the projects that have been initially developed for Utkal University Placement Portal.
