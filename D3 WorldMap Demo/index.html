@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>World Map Demo</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
+    <script src="datamaps.world.min.js"></script>
+    <!-- <script type="text/javascript" src="index.js"></script> -->
+    <script type="text/javascript" src="worldData.js"></script>
+</head>
+<body>
+    <div>
+        <div id="container" style="position: relative; width: 95%; height: 500px;"></div>
+        <div style="width: 10%;display: none;" id="infoContainer">
+            <label style="font-weight: bold;"><u><i>Details</i></u></label><br>
+            <label style="font-weight: bold">Country Name : <span id="countryName"></span></label><br>
+            <label style="font-weight: bold">Country Code : <span id="countryCode"></span></label><br>
+            <label style="font-weight: bold">status_carry : <span id="status_carry">Yes</span></label><br>
+            <label style="font-weight: bold">rules_carry  : <span id="rules_carry"><a href="">www.dummyUrl.com</a></span></label><br> 
+            <label style="font-weight: bold">rules_carry_notes : <span id="rules_carry_notes">Demo text</span></label><br>
+            <label style="font-weight: bold">status_mail : <span id="status_mail"></span>Yes</label><br>
+            <label style="font-weight: bold">rules_mail : <span id="rules_mail"></span>dummyMail@dummy.com</label><br>
+            <label style="font-weight: bold">rules_mail_notes : <span id="rules_mail_notes"></span>Some text</label><br>
+            <label style="font-weight: bold">planB : <span id="planB"></span>Some text</label><br>
+        </div>        
+    </div>
+
+<!--     <script>
+        //https://github.com/markmarkoh/datamaps/blob/master/README.md#using-custom-maps
+        var labelNames = {};
+        var cntryColor = {};
+        //console.log("worldData ----->",worldData.objects.world.geometries);
+        var len = worldData.objects.world.geometries.length;
+
+        
+        var map = new Datamap({
+            element: document.getElementById('container'),
+            scope: 'world',
+            geographyConfig: {
+                //dataUrl: 'worldNew.topo.json',
+                data : worldData,
+                projection: 'equirectangular',
+                highlightBorderColor: 'yellow',
+                highlightBorderWidth: 2,
+                borderWidth: 1,
+                borderOpacity: 2,
+                borderColor: 'white',
+                popupTemplate: function(geo, data) {
+                    
+                    return ['<div class="hoverinfo" style="border-radious:25px;"><strong>',
+                            'Country Name:' + geo.properties.name+'</div>'].join('');
+                }            
+            },
+            done: function(datamap){
+                datamap.svg.selectAll('.datamaps-subunit').on('click', function(geography){
+                    //alert(1);
+                    document.getElementById("infoContainer").style = 'block';
+                    //alert(JSON.stringify(geography.properties) );
+                    console.log(geography.properties);
+                    document.getElementById("countryName").innerHTML = geography.properties.name;
+                    document.getElementById("countryCode").innerHTML = geography.id;
+                    var stmnt = "Country Name is "+geography.properties.name+"And Country Code is "+geography.id;
+                    var u1 = new SpeechSynthesisUtterance(stmnt);
+                    speechSynthesis.speak(u1);
+                })
+            },
+            arcConfig: {
+                strokeColor: 'white',
+                strokeWidth: 0,
+                arcSharpness: 0,
+            }
+        });
+        
+        //console.log("lenfgth --->",len);
+       for(var i = 0; i < len; i++){
+            var id = worldData.objects.world.geometries[i].id;
+            var name = worldData.objects.world.geometries[i].properties.name;
+            
+            if(id != -99){
+                labelNames[id] = id;//name;
+                //console.log("id ->",id);
+                var cntryCode = labelNames[id] ;
+                if(i % 2 == 0){
+
+                    cntryColor[cntryCode] = '#f5a71d';
+                }else if(i % 3 == 0){
+                    cntryColor[cntryCode] = '#b1d236';
+                }else if (i % 5 == 0){
+                    cntryColor[cntryCode] = '#ef385d';
+                }else{
+                    cntryColor[cntryCode] = '#2fb1c0';
+                }                
+            }
+
+            //map.updateChoropleth({ cntryCode : "pink"})
+        }
+       // console.log("labelNames ----->",cntryColor);
+        map.labels({'customLabelText' : labelNames});
+        map.updateChoropleth(cntryColor);
+    
+    </script> -->
+</body>
+</html>
+
+
